@@ -6,15 +6,20 @@ import  NewsDetail from './page/NewsDetail'
 import Favorites from './page/Favorites'
 import NavBar from './components/NavBar'
 import Container from 'react-bootstrap/Container';
+import Loader from './components/Loader'
+import { useSelector } from 'react-redux'
+
 
 function App() {
 
+const isLoading = useSelector( state => state.isLoading )
 
   return (
     
     <HashRouter>
-      <div className="App">
-        <NavBar/>
+       <NavBar/>
+       { isLoading && <Loader/>}
+        
         <Container className='my-5'>
           <Routes>
             <Route
@@ -35,7 +40,7 @@ function App() {
             />
           </Routes>
         </Container>
-      </div>
+     
       </HashRouter>  
     
   )
